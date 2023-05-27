@@ -1,1 +1,1 @@
-nico weko
+var nico = weko
