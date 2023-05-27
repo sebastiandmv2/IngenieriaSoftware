@@ -87,7 +87,7 @@ button:hover {
 #rutApoderado,
 #correoApoderado,
 #metodoPago {
-  width: 90%;
+  width: 92%;
 }
 
 @media screen and (max-width: 767px) {
@@ -95,7 +95,7 @@ button:hover {
   #rutApoderado,
   #correoApoderado,
   #metodoPago {
-    width: 90%;
+    width: 92%;
   }
 }
 .footer {
@@ -149,10 +149,9 @@ button:hover {
 }
 
 
-/* Estilos para el formulario */
 .container {
     max-width: 600px;
-    margin: 50px auto; /* Aumenta el valor del margen superior para separar más el formulario */
+    margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -161,7 +160,7 @@ button:hover {
     flex-direction: column;
 }
 
-/* Estilos para los campos de entrada */
+
 input,
 select {
     padding: 10px;
@@ -171,14 +170,12 @@ select {
     border-radius: 3px;
 }
 
-/* Estilos para las etiquetas de los campos */
 label {
     margin-top: 10px;
     text-align: start;
     font-weight: bold;
 }
 
-/* Estilos para el botón */
 button {
     padding: 10px 20px;
     margin-top: 10px;
@@ -196,10 +193,8 @@ button:hover {
 .button-container {
     display: flex;
     justify-content: center;
-    text-align: center; /* Agregado para centrar el botón */
+    text-align: center;
 }
-
-/* Estilos para los mensajes de error */
 .error-message {
     color: red;
     margin-top: 5px;
