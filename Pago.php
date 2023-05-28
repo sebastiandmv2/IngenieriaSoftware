@@ -21,10 +21,6 @@ if (isset($_GET['datos'])) {
             $query = "SELECT nombre_curso FROM curso";
             break;
 
-        case 'cuotas':
-            $query = "SELECT numero_cuotas FROM cuotas";
-            break;
-
         case 'metodoPago':
             $query = "SELECT nombre_metodo FROM metodo_pago";
             break;

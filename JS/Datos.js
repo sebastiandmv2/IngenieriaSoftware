@@ -19,7 +19,7 @@ $(document).ready(function () {
         $('#rutEstudiante').html(response);
       },
       error: function () {
-        alert('Error al cargar los datos de rutEstudiante.');
+        alert('Error al cargar los datos de Estudiante.');
       }
     });
 
@@ -38,24 +38,12 @@ $(document).ready(function () {
     $.ajax({
       url: 'Pago.php',
       type: 'GET',
-      data: { datos: 'cuotas' },
-      success: function (response) {
-        $('#cuotas').html(response);
-      },
-      error: function () {
-        alert('Error al cargar los datos de cuotas.');
-      }
-    });
-
-    $.ajax({
-      url: 'Pago.php',
-      type: 'GET',
       data: { datos: 'metodoPago' },
       success: function (response) {
         $('#metodoPago').html(response);
       },
       error: function () {
-        alert('Error al cargar los datos de metodoPago.');
+        alert('Error al cargar los datos de Metodo de Pago.');
       }
     });
   });
