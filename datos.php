@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "ADM", "ADM123", "ontour");
+$conexion = mysqli_connect("localhost", "123", "123", "ontour");
 
 if (!$conexion) {
     die("Error al conectar con la base de datos: " . mysqli_connect_error());
