@@ -36,7 +36,8 @@ if (isset($_GET['datos'])) {
         die("Error al obtener los datos: " . mysqli_error($conexion));
     }
 
-    $options = "";
+    $options = "<option value=\"0\" disabled selected>Seleccione</option>";
+
     while ($fila = mysqli_fetch_assoc($resultado)) {
         $valor = $fila[key($fila)];
         $options .= "<option value=\"$valor\">$valor</option>";

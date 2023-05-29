@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-      url: 'Pago.php',
+      url: 'datos.php',
       type: 'GET',
       data: { datos: 'colegio' },
       success: function (response) {
@@ -12,19 +12,7 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: 'Pago.php',
-      type: 'GET',
-      data: { datos: 'rutEstudiante' },
-      success: function (response) {
-        $('#rutEstudiante').html(response);
-      },
-      error: function () {
-        alert('Error al cargar los datos de Estudiante.');
-      }
-    });
-
-    $.ajax({
-      url: 'Pago.php',
+      url: 'datos.php',
       type: 'GET',
       data: { datos: 'curso' },
       success: function (response) {
@@ -36,7 +24,19 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: 'Pago.php',
+      url: 'datos.php',
+      type: 'GET',
+      data: { datos: 'rutEstudiante' },
+      success: function (response) {
+        $('#rutEstudiante').html(response);
+      },
+      error: function () {
+        alert('Error al cargar los datos de Estudiante.');
+      }
+    });
+    
+    $.ajax({
+      url: 'datos.php',
       type: 'GET',
       data: { datos: 'metodoPago' },
       success: function (response) {
