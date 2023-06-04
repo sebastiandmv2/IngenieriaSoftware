@@ -10,15 +10,16 @@ if (isset($_GET['datos'])) {
 
     switch ($datos) {
         case 'colegio':
-            $query = "SELECT nombre_colegio FROM colegio";
+            $query = "SELECT id_colegio, nombre_colegio FROM colegio";
             break;
-
+        
         case 'rutEstudiante':
             $query = "SELECT run_alumno FROM alumno";
             break;
 
         case 'curso':
-            $query = "SELECT nombre_curso FROM curso";
+            $id_colegio = $_GET['id_colegio'];
+            $query = "SELECT nombre_curso FROM curso WHERE id_colegio = $id_colegio";
             break;
 
         case 'metodoPago':
@@ -34,18 +35,17 @@ if (isset($_GET['datos'])) {
 
     if (!$resultado) {
         die("Error al obtener los datos: " . mysqli_error($conexion));
-    }
+    } 
 
-    $options = "<option value=\"0\" disabled selected>Seleccione</option>";
+    $datos = array();
 
     while ($fila = mysqli_fetch_assoc($resultado)) {
-        $valor = $fila[key($fila)];
-        $options .= "<option value=\"$valor\">$valor</option>";
+        $datos[] = $fila;
     }
 
     mysqli_close($conexion);
 
-    echo $options;
+    echo json_encode($datos);
 } else {
     echo "Solicitud no encontrada.";
 }
