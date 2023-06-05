@@ -1,13 +1,18 @@
 $(document).ready(function() {
   obtenerColegios();
 
-  obtenerEstudiantes();
- 
+  obtenerTodosEstudiantes();
+
   obtenerMetodosPago();
 
   $('#colegio').on('change', function() {
     var idColegio = $(this).val();
     obtenerCursos(idColegio);
+  });
+
+  $('#curso').on('change', function() {
+    var idCurso = $(this).val();
+    obtenerEstudiantesCurso(idCurso);
   });
 });
 
@@ -30,7 +35,6 @@ function obtenerColegios() {
   });
 }
 
-
 function obtenerCursos(idColegio) {
   $.ajax({
     url: 'datos.php',
@@ -50,17 +54,40 @@ function obtenerCursos(idColegio) {
   });
 }
 
-
-function obtenerEstudiantes() {
+function obtenerTodosEstudiantes() {
   $.ajax({
     url: 'datos.php',
     type: 'GET',
     data: { datos: 'rutEstudiante' },
     success: function(response) {
-      $('#rutEstudiante').html(response);
+      var estudiantes = JSON.parse(response);
+      var options = "<option value=\"\">Seleccione</option>";
+      for (var i = 0; i < estudiantes.length; i++) {
+        options += "<option value=\"" + estudiantes[i].run_alumno + "\">" + estudiantes[i].run_alumno + "</option>";
+      }
+      $('#rutEstudiante').html(options);
     },
     error: function(xhr, status, error) {
-      console.log('Error al obtener los estudiantes:', error);
+      console.log('Error al obtener todos los estudiantes:', error);
+    }
+  });
+}
+
+function obtenerEstudiantesCurso(idCurso) {
+  $.ajax({
+    url: 'datos.php',
+    type: 'GET',
+    data: { datos: 'rutEstudiante', id_curso: idCurso },
+    success: function(response) {
+      var estudiantes = JSON.parse(response);
+      var options = "<option value=\"\">Seleccione</option>";
+      for (var i = 0; i < estudiantes.length; i++) {
+        options += "<option value=\"" + estudiantes[i].run_alumno + "\">" + estudiantes[i].run_alumno + "</option>";
+      }
+      $('#rutEstudiante').html(options);
+    },
+    error: function(xhr, status, error) {
+      console.log('Error al obtener los estudiantes del curso:', error);
     }
   });
 }
@@ -71,7 +98,12 @@ function obtenerMetodosPago() {
     type: 'GET',
     data: { datos: 'metodoPago' },
     success: function(response) {
-      $('#metodoPago').html(response);
+      var metodosPago = JSON.parse(response);
+      var options = "";
+      for (var i = 0; i < metodosPago.length; i++) {
+        options += "<option value=\"" + metodosPago[i].nombre_metodo + "\">" + metodosPago[i].nombre_metodo + "</option>";
+      }
+      $('#metodoPago').html(options);
     },
     error: function(xhr, status, error) {
       console.log('Error al obtener los métodos de pago:', error);
