@@ -15,26 +15,7 @@ if (isset($_GET['datos'])) {
 
             case 'rutEstudiante':
                 $id_curso = $_GET['id_curso'];
-                $query = "SELECT run_alumno FROM alumno WHERE id_curso = ?";
-                        
-                $stmt = mysqli_prepare($conexion, $query);
-                mysqli_stmt_bind_param($stmt, 'i', $id_curso);
-                mysqli_stmt_execute($stmt);
-                $resultado = mysqli_stmt_get_result($stmt);
-                        
-                if (!$resultado) {
-                    die("Error al obtener los datos: " . mysqli_error($conexion));
-                }
-                        
-                $datos = array();
-                        
-                while ($fila = mysqli_fetch_assoc($resultado)) {
-                    $datos[] = $fila;
-                }
-                        
-                mysqli_stmt_close($stmt);
-                        
-                echo json_encode($datos);
+                $query = "SELECT run_alumno FROM alumno WHERE id_curso = $id_curso";
                 break;
 
         case 'curso':

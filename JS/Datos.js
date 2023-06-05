@@ -1,8 +1,6 @@
 $(document).ready(function() {
   obtenerColegios();
-
   obtenerTodosEstudiantes();
-
   obtenerMetodosPago();
 
   $('#colegio').on('change', function() {
@@ -44,7 +42,7 @@ function obtenerCursos(idColegio) {
       var cursos = JSON.parse(response);
       var options = "<option value=\"\">Seleccione</option>";
       for (var i = 0; i < cursos.length; i++) {
-        options += "<option value=\"" + cursos[i].nombre_curso + "\">" + cursos[i].nombre_curso + "</option>";
+        options += "<option value=\"" + cursos[i].id_curso + "\">" + cursos[i].nombre_curso + "</option>";
       }
       $('#curso').html(options);
     },
